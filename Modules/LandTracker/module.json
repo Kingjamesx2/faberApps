@@ -1,0 +1,11 @@
+{
+    "name": "LandTracker",
+    "alias": "landtracker",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\LandTracker\\Providers\\LandTrackerServiceProvider"
+    ],
+    "files": []
+}

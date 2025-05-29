@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Modules\LandTracker\Models\Documents;
+use Modules\LandTracker\Models\Parcel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -46,5 +47,16 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Get the parcels associated with the user.
+     */
+    public function parcels() {
+        return $this->hasMany(Parcel::class);
+    }
+
+    public function documents() {
+        return $this->hasMany(Documents::class, 'user_id');
     }
 }
