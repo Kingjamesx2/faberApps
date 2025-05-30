@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('land_listings', function (Blueprint $table) {
             $table->id();
-            
+            $table->string('name'); // Name of the land listing
+            $table->string('location'); // Location of the land listing
+            $table->foreignId('parcel_id')->constrained('parcels')->onDelete('cascade'); // Foreign key to parcels table
             $table->timestamps();
         });
     }

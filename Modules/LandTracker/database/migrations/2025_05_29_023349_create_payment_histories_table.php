@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('payment_histories', function (Blueprint $table) {
             $table->id();
-            
+            $table->foreignId('parcel_id')->constrained('parcels')->onDelete('cascade');
+            $table->date('payment_date'); // Date of the payment
+            $table->decimal('amount', 10, 2); // Amount paid
+            $table->string('payment_method'); // e.g., 'credit_card', 'bank_transfer', 'cash'
+            $table->string('transaction_id')->nullable(); // Transaction ID for tracking
             $table->timestamps();
         });
     }
