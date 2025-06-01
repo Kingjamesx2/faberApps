@@ -12,6 +12,16 @@ class RealEstateAgentResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            "id" => $this->id,
+            "name" => $this->name,
+            "phoneNumber" => $this->phone_number,
+            "licenseNumber" => $this->license_number,
+            "agencyName" => $this->agency_name,
+            "agencyAddress" => $this->agency_address,
+            "agencyEmail" => $this->agency_email,
+            "createdAt" => $this->created_at,
+            "updatedAt" => $this->updated_at,
+        ];
     }
 }

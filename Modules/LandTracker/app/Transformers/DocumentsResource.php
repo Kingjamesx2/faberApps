@@ -12,6 +12,16 @@ class DocumentsResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            "id" => $this->id,
+            "parcelId" => $this->parcel_id,
+            "userId" => $this->user_id,
+            "agentId" => $this->agent_id,
+            "type" => $this->type,
+            "title" => $this->title,
+            "fileURL" => $this->file_url,
+            "signedAt" => $this->signed_at,
+            "createdAt" => $this->created_at,
+        ];
     }
 }

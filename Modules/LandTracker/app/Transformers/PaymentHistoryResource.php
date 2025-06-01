@@ -12,6 +12,12 @@ class PaymentHistoryResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            "id" => $this->id,
+            "paymentId" => $this->payment_id,
+            "amount" => $this->amount,
+            "paymentDate" => $this->payment_date,
+            "paymentMethod" => $this->payment_method,
+        ];
     }
 }

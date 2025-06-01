@@ -12,6 +12,16 @@ class ParcelResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            "id" => $this->id,
+            "parcelNo" => $this->parcel_no,
+            "realEstateAgentId" => $this->real_estate_agent_id,
+            "userId" => $this->user_id,
+            "totalPrice" => $this->total_price,
+            "paidAmount" => $this->paid_amount,
+            "size" => $this->size,
+            "purchaseDate" => $this->purchase_date,
+            "status" => $this->status,
+        ];
     }
 }
