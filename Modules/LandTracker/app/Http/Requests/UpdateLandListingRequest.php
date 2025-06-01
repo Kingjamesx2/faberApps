@@ -4,7 +4,7 @@ namespace Modules\LandTracker\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RealEstateAgentRequest extends FormRequest
+class UpdateLandListingRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.

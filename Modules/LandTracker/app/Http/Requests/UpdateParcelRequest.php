@@ -4,7 +4,7 @@ namespace Modules\LandTracker\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ParcelRequest extends FormRequest
+class UpdateParcelRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
