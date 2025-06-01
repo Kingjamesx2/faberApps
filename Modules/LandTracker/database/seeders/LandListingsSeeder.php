@@ -1,7 +1,7 @@
 <?php
 
 namespace Modules\LandTracker\Database\Seeders;
-
+use Modules\LandTracker\Models\LandListings;
 use Illuminate\Database\Seeder;
 
 class LandListingsSeeder extends Seeder
@@ -11,6 +11,16 @@ class LandListingsSeeder extends Seeder
      */
     public function run(): void
     {
-        // $this->call([]);
+        LandListings::create([
+            "name" => "Green Acres",
+            "location" => "123 Green St, Springfield",
+            "parcel_id" => 1,
+        ]);
+
+        LandListings::create([
+            "name" => "Sunny Meadows",
+            "location" => "456 Sunny Ave, Springfield",
+            "parcel_id" => 2,
+        ]);
     }
 }
