@@ -11,7 +11,27 @@ class UpdateLandListingRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [];
+        $method = $this->method();
+        if ($method == "PUT") {
+            return [
+                "name" => ["required", "string", "max:255"],
+                "location" => ["required", "string", "max:255"],
+                "parcelId" => ["required", "integer"],
+            ];
+        } else {
+            return [
+                "name" => ["sometimes", "required", "string", "max:255"],
+                "location" => ["sometimes", "required", "string", "max:255"],
+                "parcelId" => ["sometimes", "required", "integer"],
+            ];
+        }
+    }
+
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            "parcel_id" => $this->parcelId,
+        ]);
     }
 
     /**

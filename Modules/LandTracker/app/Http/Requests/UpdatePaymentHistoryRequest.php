@@ -11,7 +11,30 @@ class UpdatePaymentHistoryRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [];
+        $method = $this->method();
+        if ($method == "PUT") {
+            return [
+                "parcelId" => ["required", "integer"],
+                "amount" => ["required", "numeric", "max:15", "min:0"],
+                "paymentDate" => ["required", "date"],
+                "paymentMethod" => ["required", "string", "max:255"],
+            ];
+        } else {
+            return ([
+                "parcelId" => ["sometimes", "required", "integer"],
+                "amount" => ["sometimes", "required", "numeric", "max:15", "min:0"],
+                "paymentDate" => ["sometimes", "required", "date"],
+                "paymentMethod" => ["sometimes", "required", "string", "max:255"],
+            ]);
+        }
+    }
+
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            "parcel_id" => $this->parcelId,
+            "payment_date" => $this->paymentDate,
+        ]);
     }
 
     /**
