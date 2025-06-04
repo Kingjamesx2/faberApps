@@ -11,7 +11,23 @@ class StorePaymentHistoryRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [];
+        return [
+            "parcelId" => ["required", "integer"],
+            "amount" => ["required", "numeric", "max:15", "min:0"],
+            "paymentDate" => ["required", "date"],
+            "paymentMethod" => ["required", "string", "max:255"],
+            "createdAt" => ["required", "date"],
+        ];
+    }
+
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            "parcel_id" => $this->parcelId,
+            "payment_date" => $this->paymentDate,
+            "payment_method" => $this->paymentMethod,
+            "created_at" => $this->createdAt,
+        ]);
     }
 
     /**

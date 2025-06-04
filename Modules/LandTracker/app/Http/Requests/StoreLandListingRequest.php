@@ -11,7 +11,18 @@ class StoreLandListingRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [];
+        return [
+            "name" => ["required", "string", "max:255"],
+            "location" => ["required", "string", "max:255"],
+            "parcelId" => ["required", "integer"],
+        ];
+    }
+
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            "parcel_id" => $this->parcelId,
+        ]);
     }
 
     /**
